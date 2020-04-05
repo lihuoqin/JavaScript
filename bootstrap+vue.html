@@ -1,0 +1,37 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+</head>
+<body>
+    <div id="app">
+        <div class="col-md-2 col-sm-3"   v-for="v in arr">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">{{ v.学号 }}</h3>
+                </div>
+                <div class="panel-body">
+                        {{ v.姓名 }}
+                </div>
+            </div> 
+        </div>
+     </div>
+    <script>
+        async function go()
+        {
+                let response = await fetch("http://lihuoqin.com/test/student.json");
+                let re = await response.json();
+                new Vue({el: '#app', data: {arr:re}});
+        }
+
+        go();
+      
+    </script>
+</body>
+</html>
