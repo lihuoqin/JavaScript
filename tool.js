@@ -1,4 +1,5 @@
-function GetUrlParms()    
+var Tool = {};
+Tool.parseUrl = function()
 {
     var args=new Object();   
     var query=location.search.substring(1);//获取查询串   
@@ -13,9 +14,7 @@ function GetUrlParms()
     }
     return args;
 }
-
-
-function dateFormatter(date)
+Tool.formatDate=function(date)
 {
   var y=date.getFullYear();
   var m=date.getMonth()+1;
