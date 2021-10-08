@@ -1,6 +1,5 @@
 var Tool = {};
-Tool.parseUrl = function()
-{
+Tool.parseUrl = function(){
     var args=new Object();   
     var query=location.search.substring(1);//获取查询串   
     var pairs=query.split("&");//在逗号处断开   
@@ -14,10 +13,26 @@ Tool.parseUrl = function()
     }
     return args;
 }
-Tool.formatDate=function(date)
-{
+Tool.formatDate=function(date){
   var y=date.getFullYear();
   var m=date.getMonth()+1;
   var d=date.getDate();
   return y+'-'+(m<10?('0'+m):m)+'-'+(d<10?('0'+d):d);
 }
+
+ $(function(){
+        $.fn.autoHeight = function(){    
+        function autoHeight(elem){
+            elem.style.height = 'auto';
+            elem.scrollTop = 0;
+            elem.style.height = elem.scrollHeight + 'px';
+        }
+        this.each(function(){
+            autoHeight(this);
+            $(this).on('keyup', function(){
+                autoHeight(this);
+            });
+        });     
+    }                
+    $('textarea[autoHeight]').autoHeight();    
+})
