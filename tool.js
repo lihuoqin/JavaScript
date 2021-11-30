@@ -36,3 +36,22 @@ Tool.formatDate=function(date){
     }                
     $('textarea[autoHeight]').autoHeight();    
 })
+
+
+function xedit(m,col){
+     if( $(m).find(".txt").length==0){
+         let id=$(m).parent().find("td").eq(0).html();
+         let s = `<input style="width:100%" class="txt" value="`+m.innerHTML+`"/>`;
+             $(m).html(s);
+             $(m).find(".txt").focus();
+             $(m).find(".txt").blur(function(){
+                 let data={};
+                 data["id"]=id;
+                 data[col]=$(m).find(".txt").val();
+                 $.post("../attendance/editPost.html",data,function(d){
+                     console.log(d);
+                     $(m).html($(m).find(".txt").val());
+                 });
+             });
+         }
+ }
